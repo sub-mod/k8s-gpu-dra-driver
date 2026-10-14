@@ -125,6 +125,10 @@ test:
 	LD_LIBRARY_PATH=$(CURDIR)/third_party/amd_smi/lib:$$LD_LIBRARY_PATH \
 		go test -v -coverprofile=$(COVERAGE_FILE) $(MODULE)/...
 
+.PHONY: test-mock
+test-mock:
+	bash test/integration/mock-discovery.sh
+
 coverage: test
 	cat $(COVERAGE_FILE) | grep -v "_mock.go" > $(COVERAGE_FILE).no-mocks
 	go tool cover -func=$(COVERAGE_FILE).no-mocks

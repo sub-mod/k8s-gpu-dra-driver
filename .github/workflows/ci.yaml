@@ -23,3 +23,13 @@ jobs:
       go-version-file: go.mod
       build-deps: ""
       test-target: test
+
+  mock-discovery:
+    name: Mock GPU discovery
+    uses: ROCm/common-infra-operator/.github/workflows/go-test.yaml@main
+    permissions:
+      contents: read
+    with:
+      go-version-file: go.mod
+      build-deps: ""
+      test-target: test-mock
